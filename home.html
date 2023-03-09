@@ -1,0 +1,161 @@
+{% if login == True %}
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
+* {margin: 0; padding: 0; box-sizing: border-box;}
+body {
+		font-family: 'Nanum Gothic', sans-serif;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100vh;
+		background: url("http://1.bp.blogspot.com/-Ns-pAkE90Tw/VmrIqOpuM8I/AAAAAAAAADI/MXmzJc19Fw8/s320/32488455_ebc15852.gif");
+
+
+}
+table,th,td{border:2px solid green; color:deeppink     }
+table{border-collapse: collapse;}		
+</style>
+
+<head>
+	<meta charset="UTF-8">
+	<title>로그인 된 화면</title>
+</head>
+
+<body>
+<center><button type="button" onclick = "location.href='/temp'">온습도 확인</button>
+<br>
+<br>
+<br>
+	<h1>로그인 내역</h1>
+	<body bgColor = "beige">
+<div><center>
+	<table border = "1" width="500" height="200">
+	<th>success</th>
+	<th>date</th>
+	{% for i in list %}
+<tr>
+
+<td>{{i[0]}}</td>
+<td>{{i[1]}}</td>
+</tr>
+	{% endfor %}
+	</table>
+<br>	
+<center><a href = {{url_for("logout")}}>로그아웃</a></center>	
+</div></center>
+
+</body>
+	
+{%else %}
+<style>
+:root{
+	--body-background-color: #f5f6f7;
+	--font-color: #4e4e4e;
+	--border-gray-color : #dadada;
+	--naver-green-color: #04c75a;
+	--naver-green-border-color: #06b350;
+}
+
+
+*{
+	margin:0;
+	padding:0;
+}
+
+
+body{
+
+		background:var(--body-background-color);
+	}	
+.main-container .main-wrap{
+		width:768px;
+}	
+
+.login-input-section-wrap{
+	padding-top: 60px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.login-input-wrap{
+	width: 465px;
+	height :48px;
+	border: solid 1px var(	--border-gray-color );
+	background: white;
+}
+.password-wrap{
+	margin-top: 13px;
+}
+.login-input-wrap input{
+	border: none;
+	width:430px;
+	margin-top: 10px;
+	font-size: 14px;
+	margin-left: 10px;
+	height:30px;
+}
+.login-button-wrap {
+	padding-top: 13px;
+}
+.login-button-wrap button{
+	width: 465px;
+	height :48px;
+	font-size: 18px;
+	background: var(--naver-green-color);
+	color: white;
+	border: solid 1px var(--naver-green-border-color);
+}	
+table,th,td{border:2px solid green;}
+table{border-collapse: collapse;}
+
+
+</style>
+
+
+<head>
+	<meta charset="UTF-8">
+	<title>로그인 화면</title>
+	<center><h1>KDT_TEMP</h1></center>
+	<hr>
+	<center><form methods = "get" id = "login" action = {{url_for("login")}}>		
+</head>	
+<body>
+	<section class="login-input-section-wrap">
+		<div class="login-input-wrap">
+			<input type="id" id="loginId" name="loginId" placeholder="ID"></input>
+		</div>
+		<br>
+		<div class="login-input-wrap password-wrap">
+			<input type="password" id="loginPw" name ="loginPw" placeholder="Password"></input>
+		</div>
+		<br>
+		<div class="login-button-wrap">
+			<button type="submit" class="login">로그인</button>
+		<hr>	
+		<br>
+		</div>
+	</section>
+
+
+<div class ="login-flag"><center>
+	<br>		
+		<center><h1>로그인 내역</h1></center>
+	<table border = "1" width="500" height="200" >
+	<th>fail</th>
+	<th>date</th>
+	{% for i in list %}
+<tr>
+<td>{{i[0]}}</td>
+<td>{{i[1]}}</td>
+</tr>
+	{% endfor %}
+	</table>
+</div></center>	
+
+</body>
+
+</form></center>
+
+{%endif%}	

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang ="en">
+
+<style>
+table,th,td{border:2px solid orange;}
+table{border-collapse: collapse;}
+</style>
+	<head>
+	<meta charset ="UTF-8">
+		<p><h1><center><span style="border-radius: 15px 15px 15px 0; border: 3px solid #FFAD5B; padding:0.5em 0.6em;color: ##FF8000;">TEMP HUMI TIME</span></center></h1></p>
+	</head>
+
+	<body>	
+	<!--	background-image:href("https://p4.wallpaperbetter.com/wallpaper/466/485/262/hi-def-nature-pictures-2560x1440-wallpaper-preview.jpg");-->
+		<body bgColor = "pink">
+		<center><h2> 시간에따른 온도,습도 표현 </h2></center>
+<center>
+	<button type="button" onclick="document.bgColor='white'">흰색</button>
+	<button type="button" onclick="document.bgColor='pink'">핑크색</button>
+	<button type="button" onclick="document.bgColor='LightGreen'">연녹색</button>
+	<br>
+	<label for="start">Start date:</label>
+
+	<br>
+	<form>
+		<input type="datetime-local" id="currentDatetime"/>
+	</form>	
+
+	<script>
+		document.getElementById('currentDatetime').value=new Date().toISOString().slice(0, 16);
+	</script>			
+
+
+</center>
+	
+	<div><center>
+		<table border = "1" width="500" height="200">
+		<th>온도</th>
+		<th>습도</th>
+		<th>날짜</th>
+		{% for i in list %}
+	<tr>
+		
+	<td> {{i[0]}}C</td>
+	<td> {{i[1]}}%</td>
+	<td> {{i[2]}}</td>
+	</tr>
+		{% endfor %}
+		</table>
+	</div></center>
+<br>
+	<center><a href = {{url_for("logout")}}>로그아웃</a></center>
+	</body>
+</html>
+
